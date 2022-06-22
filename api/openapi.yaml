@@ -1,0 +1,190 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: lampralexandros@gmail.com
+  description: This is a sample openApi document
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://wabli.netlify.app/
+  title: TempApi
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: wabli-contest-52206
+  url: http://83.212.100.226:3005/v1
+security:
+- {}
+tags:
+- description: not yet ready
+  name: assessmetric
+paths:
+  /assessmetric:
+    post:
+      operationId: createassessmetric
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assessmetric'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assessmetric'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - assessmetric
+      x-eov-operation-handler: controllers/AssessmetricController
+  /assessmetric/{assessmetricId}:
+    delete:
+      operationId: deleteassessmetric
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: assessmetricId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - assessmetric
+      x-eov-operation-handler: controllers/AssessmetricController
+    get:
+      operationId: getassessmetric
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: assessmetricId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assessmetric'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - assessmetric
+      x-eov-operation-handler: controllers/AssessmetricController
+    put:
+      operationId: updateassessmetric
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: assessmetricId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/assessmetric'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/assessmetric'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - assessmetric
+      x-eov-operation-handler: controllers/AssessmetricController
+  /assessmetric/getAll:
+    get:
+      operationId: getAllassessmetric
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/assessmetric'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - assessmetric
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/AssessmetricController
+components:
+  schemas:
+    assessmetric:
+      example:
+        vegintake: 2.027123023002322
+        systolic: 2.3021358869347655
+        diastolic: 7.061401241503109
+        proteinintake: 5.637376656633329
+        grainintake: 9.301444243932576
+        weight: 0.8008281904610115
+        waistcirc: 1.4658129805029452
+        oximetry: 5.962133916683182
+        fruitintake: 3.616076749251911
+        _id: _id
+        bmi: 6.027456183070403
+      properties:
+        _id:
+          type: string
+        weight:
+          format: double
+          type: number
+        bmi:
+          format: double
+          type: number
+        waistcirc:
+          format: double
+          type: number
+        oximetry:
+          format: double
+          type: number
+        proteinintake:
+          format: double
+          type: number
+        systolic:
+          format: double
+          type: number
+        diastolic:
+          format: double
+          type: number
+        grainintake:
+          format: double
+          type: number
+        fruitintake:
+          format: double
+          type: number
+        vegintake:
+          format: double
+          type: number
+      required:
+      - bmi
+      - diastolic
+      - fruitintake
+      - grainintake
+      - oximetry
+      - proteinintake
+      - systolic
+      - vegintake
+      - waistcirc
+      - weight
+      type: object
